@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "8f83bec4-95cf-481f-a82e-7255e5c8fe22",
+		"name": "RecargaPay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9934819"
+	},
+	"item": [
+		{
+			"name": "Create wallet user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Reteste\",\r\n    \"document\":\"99945678910\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/wallet-service/v1/wallets/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet-service",
+						"v1",
+						"wallets",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deposit funds",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"cd44866d-9cd4-4083-8d30-9f956b217292\",\r\n    \"amount\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/wallet-service/v1/wallets/deposits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet-service",
+						"v1",
+						"wallets",
+						"deposits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/wallet-service/v1/wallets/users/cd44866d-9cd4-4083-8d30-9f956b217292/balances",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet-service",
+						"v1",
+						"wallets",
+						"users",
+						"cd44866d-9cd4-4083-8d30-9f956b217292",
+						"balances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Historical Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/wallet-service/v1/wallets/users/f0d72fda-2da1-4f8e-a92f-00bbb5b7252d/historical-balances?startDate=2025-06-06 00:00&endDate=2025-06-08 00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet-service",
+						"v1",
+						"wallets",
+						"users",
+						"f0d72fda-2da1-4f8e-a92f-00bbb5b7252d",
+						"historical-balances"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2025-06-06 00:00"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-06-08 00:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer funds",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fromUserId\": \"cd44866d-9cd4-4083-8d30-9f956b217292\",\r\n    \"toUserId\": \"f0d72fda-2da1-4f8e-a92f-00bbb5b7252d\",\r\n    \"amount\": \"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/wallet-service/v1/wallets/transfers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet-service",
+						"v1",
+						"wallets",
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw Funds",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"f0d72fda-2da1-4f8e-a92f-00bbb5b7252d\",\r\n    \"amount\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/wallet-service/v1/wallets/withdrawals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet-service",
+						"v1",
+						"wallets",
+						"withdrawals"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

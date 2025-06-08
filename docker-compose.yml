@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: postgresql
+    networks:
+      - recpay
+    environment:
+      - POSTGRES_DATABASE=wallet
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=wallet
+    volumes:
+      - ./database/migration.sql:/docker-entrypoint-initdb.d/database.sql
+    ports:
+      - 5432:5432
+  pgadmin:
+      image: dpage/pgadmin4
+      environment:
+          PGADMIN_DEFAULT_EMAIL: 'root@teste.com'
+          PGADMIN_DEFAULT_PASSWORD: 'root'
+      ports:
+          - 16543:80
+      volumes:
+          - ./database/pgadmin.json:/pgadmin4/servers.json
+      depends_on:
+        - db
+      networks:
+          - recpay
+  # api:
+  #   image: openjdk:21-jdk-slim
+  #   container_name: wallet-api
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - recpay
+  #   environment:
+  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/wallet
+  #     - SPRING_DATASOURCE_USERNAME=wallet
+  #     - SPRING_DATASOURCE_PASSWORD=root
+  #   volumes:
+  #     - ./target/wallet-service-0.0.1-SNAPSHOT.jar:/app/app.jar
+  #   working_dir: /app
+  #   command: ["java", "-jar", "app.jar"]
+  #   ports:
+  #     - 8080:8080
+
+networks:
+  recpay:
+      driver: bridge
