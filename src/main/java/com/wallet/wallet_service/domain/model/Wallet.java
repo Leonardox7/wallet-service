@@ -35,7 +35,8 @@ public class Wallet {
         }
         this.balance = this.balance.add(amount);
         this.historicalBalances
-                .add(new HistoricalBalance(id.toString(), LocalDateTime.now(), this.balance, "Deposit", ""));
+                .add(new HistoricalBalance(id.toString(), LocalDateTime.now(), amount, OperationType.DEPOSIT.getValue(),
+                        ""));
     }
 
     public void withdraw(BigDecimal amount, OperationType operation, String description) {
