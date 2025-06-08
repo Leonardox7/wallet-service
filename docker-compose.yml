@@ -26,23 +26,23 @@ services:
         - db
       networks:
           - recpay
-  # api:
-  #   image: openjdk:21-jdk-slim
-  #   container_name: wallet-api
-  #   depends_on:
-  #     - db
-  #   networks:
-  #     - recpay
-  #   environment:
-  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/wallet
-  #     - SPRING_DATASOURCE_USERNAME=wallet
-  #     - SPRING_DATASOURCE_PASSWORD=root
-  #   volumes:
-  #     - ./target/wallet-service-0.0.1-SNAPSHOT.jar:/app/app.jar
-  #   working_dir: /app
-  #   command: ["java", "-jar", "app.jar"]
-  #   ports:
-  #     - 8080:8080
+  api:
+    image: openjdk:21-jdk-slim
+    container_name: wallet-api
+    depends_on:
+      - db
+    networks:
+      - recpay
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/wallet
+      - SPRING_DATASOURCE_USERNAME=wallet
+      - SPRING_DATASOURCE_PASSWORD=root
+    volumes:
+      - ./target/wallet-service-0.0.1-SNAPSHOT.jar:/app/app.jar
+    working_dir: /app
+    command: ["java", "-jar", "app.jar"]
+    ports:
+      - 8080:8080
 
 networks:
   recpay:
