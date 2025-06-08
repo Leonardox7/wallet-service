@@ -106,3 +106,14 @@ To run unit and integration tests, use:
 mvn test
 ```
 ---
+
+## 🗄️ Database
+
+📥 Accessing pgAdmin
+URL: http://localhost:16543/login
+
+Email: root@teste.com
+Password: root
+
+🐘 Connecting to PostgreSQL Server
+Password: root
